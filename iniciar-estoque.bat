@@ -3,8 +3,8 @@ setlocal
 
 set "ROOT=%~dp0"
 
-if not exist "%ROOT%projeto_estoque\app.js" (
-    echo Nao encontrei a API em "%ROOT%projeto_estoque".
+if not exist "%ROOT%backend\app.js" (
+    echo Nao encontrei a API em "%ROOT%backend".
     pause
     exit /b 1
 )
@@ -15,7 +15,7 @@ if not exist "%ROOT%package.json" (
     exit /b 1
 )
 
-start "API Estoque+" /D "%ROOT%projeto_estoque" cmd /k "node app.js"
+start "API Estoque+" /D "%ROOT%backend" cmd /k "node --env-file=.env app.js"
 start "Frontend Estoque+" /D "%ROOT%" cmd /k "npm run dev -- --host"
 
 echo Aguardando o frontend iniciar...

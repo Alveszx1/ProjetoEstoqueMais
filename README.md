@@ -63,21 +63,21 @@ O projeto é dividido em três partes: a interface web, que permite consultar e 
 ## Configuração inicial
 
 1. Clone ou copie o projeto para o computador.
-2. Crie o banco e as tabelas executando `projeto_estoque/model/database_script/estoque+.sql` no MySQL. O script cria o banco `db_estoque_mais`.
-3. Configure a conexão do MySQL em `projeto_estoque/model/database_config/knex.config.js`. Use o host, usuário, senha e porta do seu ambiente. Não compartilhe nem versione credenciais reais.
+2. Crie o banco e as tabelas executando `backend/model/database_script/estoque+.sql` no MySQL. O script cria o banco `db_estoque_mais`.
+3. Copie `backend/.env.example` para `backend/.env` e configure os dados do seu MySQL. O arquivo `.env` é ignorado pelo Git; não compartilhe nem versione credenciais reais.
 4. Instale as dependências do frontend e da API, em terminais separados:
 
    ```powershell
    # Na pasta raiz do projeto
    npm install
 
-   # Na pasta projeto_estoque
+   # Na pasta backend
    npm install
    ```
 
 ### Dados de demonstração
 
-O arquivo `projeto_estoque/model/database_script/dados_iniciais.sql` insere categorias e produtos de exemplo, além de vendas e movimentações. **Atenção: ele apaga os dados das tabelas antes de inserir os exemplos.** Execute-o somente em um banco descartável ou depois de fazer uma cópia de segurança.
+O arquivo `backend/model/database_script/dados_iniciais.sql` insere categorias e produtos de exemplo, além de vendas e movimentações. **Atenção: ele apaga os dados das tabelas antes de inserir os exemplos.** Execute-o somente em um banco descartável ou depois de fazer uma cópia de segurança.
 
 ## Como executar
 
@@ -89,10 +89,10 @@ Mantenha as duas janelas abertas enquanto estiver usando o sistema.
 
 ### Iniciar manualmente
 
-Abra um terminal na pasta `projeto_estoque` e inicie a API:
+Abra um terminal na pasta `backend` e inicie a API:
 
 ```powershell
-node app.js
+node --env-file=.env app.js
 ```
 
 Em outro terminal, na pasta raiz do projeto, inicie o frontend:
@@ -129,7 +129,7 @@ src/                         Interface Vue
   components/                Componentes reutilizáveis
   services/estoqueApi.ts     Comunicação com a API
   views/                     Telas do sistema
-projeto_estoque/              API Node.js/Express
+backend/                      API Node.js/Express
   controller/                Controladores das rotas
   model/DAO/                 Acesso ao banco de dados
   model/database_config/     Configuração do MySQL
@@ -142,4 +142,4 @@ iniciar-estoque.bat          Inicialização local no Windows
 
 ## Documentação da API
 
-Para consultar as rotas, parâmetros, filtros e exemplos de requisição, veja [`projeto_estoque/README.md`](./projeto_estoque/README.md).
+Para consultar as rotas, parâmetros, filtros e exemplos de requisição, veja [`backend/README.md`](./backend/README.md).
